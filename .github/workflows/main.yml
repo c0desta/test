@@ -17,4 +17,4 @@ jobs:
           AWS_DEFAULT_REGION: "us-east-1"
         with:
           args: >-
-            s3 `echo ${GITHUB_SHA}`
+            aws s3 ls s3://`echo ${GITHUB_SHA}`

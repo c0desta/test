@@ -16,4 +16,4 @@ jobs:
           AWS_SECRET_ACCESS_KEY: 12312313133
           AWS_DEFAULT_REGION: "us-east-1"
         with:
-          args: aws s3 ls s3://{{env.GITHUB_SHA}}
+          args: s3 ls s3://${{env.GITHUB_SHA}}

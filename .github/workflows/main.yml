@@ -1,0 +1,22 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+jobs:
+    staging-deploy:
+      runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/dev'
+      steps:
+      - uses: actions/checkout@v1
+      - name: AWS Create Deploy
+        uses: ItsKarma/aws-cli@v1.70.0
+        env:
+          AWS_ACCESS_KEY_ID: 123123123123
+          AWS_SECRET_ACCESS_KEY: 12312313133
+          AWS_DEFAULT_REGION: "us-east-1"
+        with:
+          args: >-
+            s3 ${GITHUB_SHA}
